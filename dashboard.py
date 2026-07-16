@@ -121,8 +121,8 @@ st.markdown("""
 @st.cache_data(ttl=60)
 def load_data():
 
-    gc = gspread.service_account(
-        filename="mozambiquelngpj-95487-6baf7fffef1d.json"
+    gc = gspread.service_account_from_dict(
+     st.secrets["gcp_service_account"]
     )
 
 
