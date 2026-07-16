@@ -688,11 +688,11 @@ with tab2:
 
         st.download_button(
         "📥 Export Current Table",
-            data=buffer,
-            file_name="spool_summary.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            use_container_width=True
-        )
+        data=buffer,
+        file_name="spool_summary.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        width="stretch"
+    )
 
     # Show table only after clicking Preview
     if st.session_state.show_table:
