@@ -1,0 +1,16 @@
+[gcp_service_account]
+
+type = "service_account"
+project_id = "mozambiquelngpj-95487"
+private_key_id = "6edec9d43bd04808c4948b90bca58765e0eafdee"
+private_key = """-----BEGIN PRIVATE KEY-----
+MIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQDnkrmedvohUCA5\nNLJ9faUfdL9IfpQF81bmYCrtj/6st1F2l6SREc33iZc4b+IqC9Jm7r03RwhjuXEP\nW2ZXq71Cr3636VfnTK555IcWi3CkUNGIxb4FflqhqZh1gsQx1cuoeDuV4UQGZf6Z\nHJajVrcP8P6VDtg9gCfqXZK4NHIoKIsRb89CreEmZeqAgvJjxDwCFlQ5hb77GUeQ\nB2qy0DAArrdIsIwGP0aulAApGg7ni/5lrGCZ4mtT3x8JA/tK6bN6EjHoqlUc00gX\nWL57PGZANan2ZH24FkwNU4cbWTn7CQbqoZRNr+V5u5077rqIGcN9RyRX3vG/07j6\nNz5DCl/7AgMBAAECgf8VzNPfylOOnBYGGW/nYGyrCWwrs77VNvmqgy/txu1MVSjW\nGtbjN7BFtvsFbrYopY3cVgOtShwzRyhD/QnyNuvnDmssS356+wnYPJGuQNimn1uA\n0YMrmtMgmCN1UvO+8HsiFC+H0vnhOewKsSZKBvloBsfwpsHn1Q8gGq8CDrqwc1kw\njkp50STfXHy5WFYiGO8SgqX5YI8EUpX+BaMnow2L4bkGXFTfwy71YI+OuCp73oU6\nW+QeNgvyLmTsPyjAVS0HVO3CEZ+e+v/o34RrXWl+50eYDGZJfP1/5GnkfebiHIkT\nBvO0SVujFCunKqkriB3E8qXU1yOVViSefH6xRH0CgYEA+FPUfQB+vjsWE+0TPlpV\n+5GwWt12ed/JqHPykTAOclAqR7qPJtVj3wxYXek39e3s90asuu/zir+3aX5dU1lN\n8JgmWErs8CFuuwJQroeVaJmJH3cV8a7RUsbxN+9ewALic8RUMNX5RIkPrRYatjaX\nGM3nbiXx/u35Au+yrnOrcDUCgYEA7rpgCsCBx62lPtTz11Jdmw0j5VeKJD2AdHZJ\npbT0pW9aRg7WcIGmvoPYpAFr8JNFwQsJAULfUaGq/9ryRB0/DrZJx6qDKqqewTyf\nrT4y30O4fLdOnbebQaL8MZc09XRKfg5EnH69Z1QhxEIdKitZYnEVLFL7Em9ThrZJ\n/XJK9W8CgYAhjXodda6qV2NxR8wc1anedt3kOR4j83fU2e3BbkPVcD12OZ/T+Gsp\nHQrnjXZxNTeaZaM7EubOLX9Dsr47X8qnInez4FPJUksa24I5QrqOSoh7huShJiTE\nUXsQOriLqxgb2kAh5RdsCjTjBySO0Ct0P4XwnRHohxDpM6fp6FkWrQKBgHu54Hjy\nGNEScChGWjJon9byUn5UhmYN8ftqKvVU+c6cDZ9tpToeF/t5fdhSXE0NJwPL4lji\n/bbjISsFoLYoqjvHwilXeC+uyiTAdMlnCRqpkH4iyv324OJ9xFM3WN017j2yy2CI\nV0WsVuvOkCsA2IyqqxyTzUhapmGVLHfMuojFAoGBAKXZuadRlCL9DUHXNWCTheiU\nYwEl2U+AN5Mqa7SyK8QT2XMAB8GZBE7XM/u2mAR7aQqpWJSWKHDArop6WwheMtRC\nFOKjSofVjwyPnWQO3aLS1MigL+5fBYMI8YCVuCg9y/2BwH80CISBuzoze9XP/dZx\nIGaR/7eWyB9f3LcqxdkJ
+-----END PRIVATE KEY-----
+"""
+client_email = "firebase-adminsdk-fbsvc-mozamb@mozambiquelngpj-95487.iam.gserviceaccount.com"
+client_id = "101350726947309402467"
+auth_uri = "https://accounts.google.com/o/oauth2/auth"
+token_uri = "https://oauth2.googleapis.com/token"
+auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
+client_x509_cert_url = "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc-mozamb%40mozambiquelngpj-95487.iam.gserviceaccount.com"
+universe_domain = "googleapis.com"
