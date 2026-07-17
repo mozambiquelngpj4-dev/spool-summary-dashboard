@@ -13,7 +13,7 @@ from st_aggrid import AgGrid, GridOptionsBuilder
 # ==========================================
 
 st.set_page_config(
-    page_title="Spool Summary Dashboard",
+    page_title="SPOOL DWG SUMMARY",
     page_icon="📋",
     layout="wide"
 )
@@ -32,7 +32,7 @@ st.markdown("""
             rgba(244,247,250,0.55),
             rgba(244,247,250,0.55)
         ),
-        url("https://cdn.mos.cms.futurecdn.net/npzk4hWP7qaZ9gF5mJAD2P.jpg");
+        url("https://edmontonvalve.swagelok.com/hubfs/Facility%20Photo%20for%20COVID%20Blog.jpg#keepProtocol");
 
     background-size: cover;
     background-position: center;
@@ -193,7 +193,7 @@ df = load_data()
 
 if df.empty:
 
-    st.warning("⚠️ No spool data available.")
+    st.warning("⚠️ ***No spool data available.***")
 
 
 # ==========================================
@@ -225,7 +225,7 @@ action1, action2 = st.columns(2)
 with action1:
 
     if st.button(
-        "🔄 Refresh Data",
+        "🔄 ***REFRESH DATA***",
         use_container_width=True
     ):
 
@@ -237,7 +237,7 @@ with action1:
 with action2:
 
     sync_clicked = st.button(
-        "☁️ Sync Firebase",
+        "☁️ ***Sync Firebase (Beta)***",
         use_container_width=True
     )
 
@@ -250,13 +250,13 @@ with action2:
 
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(
     [
-        "📊 **Dashboard**",
-        "📄 **Spool Summary**",
-        "⚠️ **No Status**",
-        "🛠️ **Fabricated Spool**",
-        "🔎 **Spool Inspection**",
-        "🚚 **Delivered to Site**",
-        "🪛 **Install on Site**"
+        "📊 ***DASHBOARD***",
+        "📄 ***SPOOL LIST***",
+        "⚠️ ***NO STATUS***",
+        "🛠️ ***FABRICATED SPOOL***",
+        "🔎 ***SPOOL INSPECTION***",
+        "🚚 ***DELIVERED TO SITE***",
+        "🪛 ***INSTALL TO SITE***"
     ]
 )
 
@@ -323,7 +323,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{total}</h2>
-        <p>Total Spools</p>
+        <p>OVER-ALL SPOOL</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -335,7 +335,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{fabricated}</h2>
-        <p>Fabricated</p>
+        <p>FABRICATED</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -347,7 +347,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{inspection}</h2>
-        <p>Inspection</p>
+        <p>INSPECTION</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -357,7 +357,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{no_status}</h2>
-        <p>No Status</p>
+        <p>NO STATUS</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -369,7 +369,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{delivered}</h2>
-        <p>Delivered Site</p>
+        <p>SITE DELIVERED</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -381,7 +381,7 @@ with tab1:
         st.markdown(f"""
         <div class='card'>
         <h2>{installed}</h2>
-        <p>Install On Site</p>
+        <p>INSTALL ON SITE</p>
         </div>
         """,
         unsafe_allow_html=True)
@@ -396,22 +396,57 @@ with tab1:
     st.write("")
 
 
-    st.subheader("📈 Spool Completion")
+    st.subheader("📈 ***SPOOL COMPLETION PROGRESS***")
 
+
+    # ============================================
+    # SPOOL COMPLETION CALCULATION
+    # ============================================
+
+    total_spools = len(df)
+
+
+    installed_spools = len(
+        df[
+            df["SPOOL STATUS"]
+            .astype(str)
+            .str.upper()
+            .str.strip()
+            ==
+            "INSTALLED ON SITE"
+        ]
+    )
+
+
+    if total_spools > 0:
+
+        progress = installed_spools / total_spools
+
+    else:
+
+        progress = 0
+
+
+
+    # ============================================
+    # DISPLAY PROGRESS
+    # ============================================
 
     st.progress(progress)
 
 
     st.write(
-        f"{completed} of {total} spools completed "
+
+        f"{installed_spools} of {total_spools} spools installed on site "
         f"({int(progress*100)}%)"
+
     )
     
     # ==========================================
     # STATUS DISTRIBUTION CHART
     # ==========================================
 
-    st.subheader("📊 Spool Status Distribution")
+    st.subheader("📊 ***SPOOL STATUS DISTRIBUTION***")
 
 
     if df.empty:
@@ -860,7 +895,7 @@ def status_filter_table(dataframe, status_value, title, display_columns=None):
 
 
 
-    if selected_line != "All":
+    if selected_line != "***All***":
 
         filtered = filtered[
             filtered["LINE NO."].astype(str) == selected_line
@@ -1038,8 +1073,8 @@ with tab5:
 
     status_filter_table(
         df,
-        "SPOOL INSPECTION",
-        "🔎 Spool Inspection",
+        "***SPOOL INSPECTION***",
+        "🔎 ***Spool Inspection***",
         display_columns
     )
 
@@ -1067,8 +1102,8 @@ with tab6:
 
     status_filter_table(
         df,
-        "DELIVERED TO SITE",
-        "🚚 Delivered to Site",
+        "***DELIVERED TO SITE***",
+        "🚚 ***Delivered to Site***",
          display_columns
     )
 
@@ -1096,7 +1131,7 @@ with tab7:
     ]
     status_filter_table(
         df,
-        "INSTALL ON SITE",
-        "🪛 Install on Site",
+        "***INSTALL ON SITE***",
+        "🪛 ***Install on Site***",
         display_columns
     )
