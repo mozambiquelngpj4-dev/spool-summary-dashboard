@@ -32,7 +32,7 @@ st.markdown("""
             rgba(244,247,250,0.55),
             rgba(244,247,250,0.55)
         ),
-        url("https://edmontonvalve.swagelok.com/hubfs/Facility%20Photo%20for%20COVID%20Blog.jpg#keepProtocol");
+        url("https://tse1.mm.bing.net/th/id/OIP.LagjctIJFrGY5H-zedz_NQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3");
 
     background-size: cover;
     background-position: center;
@@ -396,7 +396,7 @@ with tab1:
     st.write("")
 
 
-    st.subheader("📈 ***SPOOL COMPLETION PROGRESS***")
+    st.subheader("📈 Spool Completion")
 
 
     # ============================================
@@ -446,7 +446,7 @@ with tab1:
     # STATUS DISTRIBUTION CHART
     # ==========================================
 
-    st.subheader("📊 ***SPOOL STATUS DISTRIBUTION***")
+    st.subheader("📊 Spool Status Distribution")
 
 
     if df.empty:
@@ -579,7 +579,7 @@ with tab2:
         placeholder="SN, ISO DWG NO., LINE NO..."
     )
 
-
+   
 
     # AREA FILTER
 
@@ -699,38 +699,58 @@ with tab2:
     buffer.seek(0)
 
     # ==========================================
-    # TABLE PREVIEW
+    # EXPORT BUTTON
     # ==========================================
 
-    if "show_table" not in st.session_state:
-        st.session_state.show_table = False
-
-    preview_col, export_col = st.columns(2)
-
-    with preview_col:
-
-        if st.button(
-            "👀 Show / Hide Table",
-            use_container_width=True
-        ):
-
-            st.session_state.show_table = not st.session_state.get(
-            "show_table",
-            False
-            )
-
-    with export_col:
-
-        st.download_button(
+    st.download_button(
         "📥 Export Current Table",
         data=buffer,
         file_name="spool_summary.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        width="stretch"
+        use_container_width=True
     )
 
-    # Show table only after clicking Preview
-    if st.session_state.show_table:
+    # ==========================================
+    # TABLE PREVIEW
+    # ==========================================
+
+    if not filtered_df.empty:
+
+        gb = GridOptionsBuilder.from_dataframe(filtered_df)
+
+        gb.configure_default_column(
+            resizable=True,
+            sortable=True,
+            filter=False,
+            floatingFilter=False
+        )
+
+        # Freeze SN to LINE NO.
+        for col in [
+            "SN",
+            "AREA",
+            "ISO DWG NO.",
+            "LINE NO."
+        ]:
+            gb.configure_column(col, pinned="left")
+
+        gb.configure_grid_options(
+        domLayout="normal"
+        )
+
+        grid_options = gb.build()
+
+        AgGrid(
+            filtered_df,
+            gridOptions=grid_options,
+            height=600,
+            width="100%",
+            theme="streamlit",
+            fit_columns_on_grid_load=False
+        )
+
+    else:
+        st.info("No matching spools found.")
 
         # ==========================================
         # FREEZE HEADER + FREEZE FIRST COLUMNS
@@ -742,7 +762,8 @@ with tab2:
         gb.configure_default_column(
             resizable=True,
             sortable=True,
-            filter=True
+            filter=False,
+            floatingFilter=False
         )
 
 
@@ -895,7 +916,7 @@ def status_filter_table(dataframe, status_value, title, display_columns=None):
 
 
 
-    if selected_line != "***All***":
+    if selected_line != "All":
 
         filtered = filtered[
             filtered["LINE NO."].astype(str) == selected_line
@@ -922,9 +943,6 @@ def status_filter_table(dataframe, status_value, title, display_columns=None):
 
     else:
 
-        # ==========================================
-        # FREEZE HEADER + FREEZE FIRST COLUMNS
-        # ==========================================
 
         # ==========================================
         # PREPARE TABLE DISPLAY
@@ -1073,8 +1091,8 @@ with tab5:
 
     status_filter_table(
         df,
-        "***SPOOL INSPECTION***",
-        "🔎 ***Spool Inspection***",
+        "SPOOL INSPECTION",
+        "🔎 Spool Inspection",
         display_columns
     )
 
@@ -1102,8 +1120,8 @@ with tab6:
 
     status_filter_table(
         df,
-        "***DELIVERED TO SITE***",
-        "🚚 ***Delivered to Site***",
+        "DELIVERED TO SITE",
+        "🚚 Delivered to Site",
          display_columns
     )
 
@@ -1131,7 +1149,7 @@ with tab7:
     ]
     status_filter_table(
         df,
-        "***INSTALL ON SITE***",
-        "🪛 ***Install on Site***",
+        "INSTALL ON SITE",
+        "🪛 Install on Site",
         display_columns
     )
