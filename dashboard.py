@@ -331,36 +331,28 @@ with tab1:
 
 
     with c2:
-
-        st.markdown(f"""
-        <div class='card'>
-        <h2>{fabricated}</h2>
-        <p>FABRICATED</p>
-        </div>
-        """,
-        unsafe_allow_html=True)
-
-
-
-    with c3:
-
-        st.markdown(f"""
-        <div class='card'>
-        <h2>{inspection}</h2>
-        <p>INSPECTION</p>
-        </div>
-        """,
-        unsafe_allow_html=True)
-        
-    with c4:
-
         st.markdown(f"""
         <div class='card'>
         <h2>{no_status}</h2>
         <p>NO STATUS</p>
         </div>
-        """,
-        unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+
+    with c3:
+        st.markdown(f"""
+        <div class='card'>
+        <h2>{fabricated}</h2>
+        <p>FABRICATED</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with c4:
+        st.markdown(f"""
+        <div class='card'>
+        <h2>{inspection}</h2>
+        <p>INSPECTION</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 
